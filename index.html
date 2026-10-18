@@ -1,1 +1,187 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Construction Excel Store</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f6fa;
+  color: #222;
+}
+header {
+  background: #142d4e;
+  color: white;
+  text-align: center;
+  padding: 30px 15px;
+}
+header h1 { margin: 0 0 10px; }
+.container {
+  max-width: 850px;
+  margin: auto;
+  padding: 15px;
+}
+.card {
+  background: white;
+  padding: 16px;
+  margin: 12px 0;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px #ddd;
+}
+.card h3 { font-size: 15px; margin: 0 0 6px; }
+.price { color: #168344; font-weight: bold; }
+button {
+  border: none;
+  padding: 11px 16px;
+  border-radius: 7px;
+  background: #1769aa;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+.selected { background: #168344; }
+.summary {
+  background: #142d4e;
+  color: white;
+  padding: 22px;
+  border-radius: 12px;
+  margin-top: 20px;
+  text-align: center;
+  position: sticky;
+  bottom: 0;
+}
+.old { text-decoration: line-through; color: #ccc; }
+.total { font-size: 27px; font-weight: bold; }
+.buy {
+  background: #ffb000;
+  color: #142d4e;
+  width: 100%;
+  margin-top: 15px;
+  font-size: 17px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>CONSTRUCTION EXCEL STORE</h1>
+<p>Professional Construction Calculators</p>
+<p>Choose only the Excel sheets you need!</p>
+</header>
+
+<div class="container">
+
+<h2>Select Your Excel Sheets</h2>
+
+<div id="sheets"></div>
+
+<div style="text-align:center;margin:20px">
+<button onclick="selectAll()">SELECT ALL 15</button>
+<button onclick="clearAll()" style="background:#777">CLEAR ALL</button>
+</div>
+
+<div class="summary">
+<h3>Your Selection</h3>
+<p>Selected Sheets: <span id="count">0</span></p>
+<p>Original Price: <span class="old" id="old">₹0</span></p>
+<p class="total" id="total">₹0</p>
+<p>₹299 per Excel sheet</p>
+<button class="buy" onclick="buyNow()">BUY NOW</button>
+</div>
+
+</div>
+
+<script>
+
+const names = [
+"Concrete Quantity - Column",
+"Concrete Quantity - Footing",
+"Concrete Quantity - Slab",
+"Concrete Quantity - Beam",
+"Steel Quantity - Beam",
+"Steel Quantity - Column",
+"Steel Quantity - Footing",
+"Steel Quantity - Slab",
+"Material Quantity",
+"Painting Quantity",
+"Plastering Quantity",
+"Plaster + Painting Quantity",
+"Total Cost of Building",
+"Total Tile Quantity",
+"Brickwork Quantity"
+];
+
+let selected = [];
+
+function render() {
+ const area = document.getElementById("sheets");
+ area.innerHTML = "";
+
+ names.forEach((name, i) => {
+  const isSelected = selected.includes(i);
+  area.innerHTML += `
+  <div class="card">
+    <div>
+      <h3>${i+1}. ${name}</h3>
+      <span class="price">₹299</span>
+      <span class="old">₹999</span>
+    </div>
+    <button class="${isSelected ? 'selected' : ''}"
+      onclick="toggle(${i})">
+      ${isSelected ? 'SELECTED ✓' : 'SELECT'}
+    </button>
+  </div>`;
+ });
+
+ update();
+}
+
+function toggle(i) {
+ if(selected.includes(i)) {
+  selected = selected.filter(x => x !== i);
+ } else {
+  selected.push(i);
+ }
+ render();
+}
+
+function selectAll() {
+ selected = names.map((_, i) => i);
+ render();
+}
+
+function clearAll() {
+ selected = [];
+ render();
+}
+
+function update() {
+ const count = selected.length;
+ document.getElementById("count").innerText = count;
+ document.getElementById("old").innerText =
+  "₹" + (count * 999).toLocaleString("en-IN");
+ document.getElementById("total").innerText =
+  "₹" + (count * 299).toLocaleString("en-IN");
+}
+
+function buyNow() {
+ if(selected.length === 0) {
+  alert("Please select at least one Excel sheet.");
+  return;
+ }
+ alert("Selection is ready! Payment integration will be connected in the next step.");
+}
+
+render();
+
+</script>
+</body>
+</html>
