@@ -67,6 +67,7 @@ button {
   font-size: 17px;
 }
 </style>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
 
 <body>
@@ -171,17 +172,130 @@ function update() {
  document.getElementById("total").innerText =
   "₹" + (count * 299).toLocaleString("en-IN");
 }
+  
+ async function buyNow() {
 
-function buyNow() {
- if(selected.length === 0) {
-  alert("Please select at least one Excel sheet.");
-  return;
- }
- alert("Selection is ready! Payment integration will be connected in the next step.");
+    if (selected.length === 0) {
+        alert("Please select at least one Excel sheet.");
+        return;
+    }
+
+    const backend = "https://construction-excel-store-backend.onrender.com";
+
+    const ids = [
+        "concrete_column",
+        "concrete_footing",
+        "concrete_slab",
+        "concrete_beam",
+        "steel_beam",
+        "steel_column",
+        "steel_footing",
+        "steel_slab",
+        "material",
+        "painting",
+        "plastering",
+        "plaster_painting",
+        "total_cost",
+        "tiles",
+        "brickwork"
+    ];
+
+    const sheetIds = selected.map(i => ids[i]);
+
+    try {
+
+        const orderResponse = await fetch(backend + "/create-order", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ sheetIds })
+        });
+
+        const order = await orderResponse.json();
+
+        if (!orderResponse.ok) {
+            throw new Error(order.error || "Order creation failed");
+        }
+
+        const options = {
+            key: order.keyId,
+            amount: order.amount,
+            currency: order.currency,
+            name: "CONSTRUCTION EXCEL STORE",
+            description: sheetIds.length + " Excel Sheet(s)",
+            order_id: order.orderId,
+
+            handler: async function (response) {
+
+                try {
+
+                    const verifyResponse = await fetch(
+                        backend + "/verify-payment",
+                        {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({
+                                razorpay_order_id: response.razorpay_order_id,
+                                razorpay_payment_id: response.razorpay_payment_id,
+                                razorpay_signature: response.razorpay_signature,
+                                sheetIds: sheetIds
+                            })
+                        }
+                    );
+
+                    const result = await verifyResponse.json();
+
+                    if (!verifyResponse.ok || !result.success) {
+                        throw new Error(result.error || "Payment verification failed");
+                    }
+
+                    const area = document.getElementById("downloadArea")
+                        || document.createElement("div");
+
+                    area.id = "downloadArea";
+                    area.style.padding = "20px";
+                    area.style.marginTop = "20px";
+
+                    area.innerHTML = "<h2>Payment Successful!</h2><p>Download your purchased Excel sheets:</p>";
+
+                    result.downloads.forEach(file => {
+
+                        const link = document.createElement("a");
+
+                        link.href = backend + file.url;
+                        link.textContent = "Download " + file.name;
+                        link.style.display = "block";
+                        link.style.padding = "12px";
+                        link.style.margin = "8px";
+                        link.style.background = "#16834a";
+                        link.style.color = "white";
+                        link.style.textDecoration = "none";
+
+                        area.appendChild(link);
+                    });
+
+                    document.querySelector(".container").appendChild(area);
+
+                    area.scrollIntoView({ behavior: "smooth" });
+
+                } catch (error) {
+                    alert(error.message);
+                }
+            }
+        };
+
+        const checkout = new Razorpay(options);
+
+        checkout.on("payment.failed", function () {
+            alert("Payment failed. Please try again.");
+        });
+
+        checkout.open();
+
+    } catch (error) {
+        alert(error.message);
+    }
 }
-
-render();
-
-</script>
-</body>
-</html>
