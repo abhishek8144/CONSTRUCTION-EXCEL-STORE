@@ -96,6 +96,7 @@ button {
 <p class="total" id="total">₹0</p>
 <p>₹299 per Excel sheet</p>
 <button class="buy" onclick="buyNow()">BUY NOW</button>
+  <p id="paymentStatus" style="text-align:center;font-size:18px;"></p>
 </div>
 
 </div>
@@ -179,7 +180,7 @@ function update() {
         alert("Please select at least one Excel sheet.");
         return;
     }
-
+document.getElementById("paymentStatus").innerText = "Creating secure payment...";
     const backend = "https://construction-excel-store-backend.onrender.com";
 
     const ids = [
