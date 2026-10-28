@@ -227,7 +227,14 @@ document.getElementById("paymentStatus").innerText = "Creating secure payment...
             description: sheetIds.length + " Excel Sheet(s)",
             order_id: order.orderId,
 
-            handler: async function (response) {
+modal: {
+    ondismiss: function() {
+        document.getElementById("paymentStatus").innerText =
+            "Payment cancelled. Please try again.";
+    }
+},
+
+handler: async function(response) {
 
                 try {
 
