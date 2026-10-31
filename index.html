@@ -94,7 +94,7 @@ button {
 <p>Selected Sheets: <span id="count">0</span></p>
 <p>Original Price: <span class="old" id="old">₹0</span></p>
 <p class="total" id="total">₹0</p>
-<p>₹299 per Excel sheet</p>
+<p>₹99 per Excel sheet</p>
 <button class="buy" onclick="buyNow()">BUY NOW</button>
   <p id="paymentStatus" style="text-align:center;font-size:18px;"></p>
 </div>
@@ -133,7 +133,7 @@ function render() {
   <div class="card">
     <div>
       <h3>${i+1}. ${name}</h3>
-      <span class="price">₹299</span>
+      <span class="price">₹99</span>
       <span class="old">₹999</span>
     </div>
     <button class="${isSelected ? 'selected' : ''}"
@@ -171,7 +171,7 @@ function update() {
  document.getElementById("old").innerText =
   "₹" + (count * 999).toLocaleString("en-IN");
  document.getElementById("total").innerText =
-  "₹" + (count * 299).toLocaleString("en-IN");
+  "₹" + (count * 99).toLocaleString("en-IN");
 }
   
  async function buyNow() {
