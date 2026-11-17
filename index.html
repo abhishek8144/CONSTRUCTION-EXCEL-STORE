@@ -1,9 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Construction Excel Store</title>
+
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,sans-serif;background:#f4f6fa;color:#222}
@@ -24,11 +26,18 @@ button{border:0;padding:11px 14px;border-radius:7px;background:#1769aa;color:whi
 .total{font-size:27px;font-weight:bold}
 .buy{background:#ffb000;color:#142d4e;width:100%;margin-top:15px;font-size:17px;padding:14px}
 #paymentStatus{font-size:16px;overflow-wrap:anywhere}
-@media(max-width:480px){.card{padding:12px}.card button{padding:10px;font-size:12px}header h1{font-size:26px}}
+@media(max-width:480px){
+.card{padding:12px}
+.card button{padding:10px;font-size:12px}
+header h1{font-size:26px}
+}
 </style>
+
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
+
 <body>
+
 <header>
 <h1>CONSTRUCTION EXCEL STORE</h1>
 <p>Professional Construction Calculators</p>
@@ -36,316 +45,423 @@ button{border:0;padding:11px 14px;border-radius:7px;background:#1769aa;color:whi
 </header>
 
 <div class="container">
+
 <h2>Select Your Excel Sheets</h2>
 
-<h2 class="section-title">BUILDING QUANTITY CALCULATORS</h2>
-<div class="card">
-  <div class="product-info">
-    <h3>1. Concrete Quantity - Column</h3>
-    <span class="price">₹149</span>
-    <span class="old"> ₹999</span>
-  </div>
-  <button type="button" class="select-btn" data-id="concrete_column" data-price="149" onclick="toggleProduct(this)">SELECT</button>
-</div>
-<div class="card">
-  <div class="product-info">
-    <h3>2. Concrete Quantity - Footing</h3>
-    <span class="price">₹149</span>
-    <span class="old"> ₹999</span>
-  </div>
-  <button type="button" class="select-btn" data-id="concrete_footing" data-price="149" onclick="toggleProduct(this)">SELECT</button>
-</div>
-<div class="card">
-  <div class="product-info">
-    <h3>3. Concrete Quantity - Slab</h3>
-    <span class="price">₹149</span>
-    <span class="old"> ₹999</span>
-  </div>
-  <button type="button" class="select-btn" data-id="concrete_slab" data-price="149" onclick="toggleProduct(this)">SELECT</button>
-</div>
-<div class="card">
-  <div class="product-info">
-    <h3>4. Concrete Quantity - Beam</h3>
-    <span class="price">₹149</span>
-    <span class="old"> ₹999</span>
-  </div>
-  <button type="button" class="select-btn" data-id="concrete_beam" data-price="149" onclick="toggleProduct(this)">SELECT</button>
-</div>
-<div class="card">
-  <div class="product-info">
-    <h3>5. Steel Quantity - Beam</h3>
-    <span class="price">₹149</span>
-    <span class="old"> ₹999</span>
-  </div>
-  <button type="button" class="select-btn" data-id="steel_beam" data-price="149" onclick="toggleProduct(this)">SELECT</button>
-</div>
-<div class="card">
-  <div class="product-info">
-    <h3>6. Steel Quantity - Column</h3>
-    <span class="price">₹149</span>
-    <span class="old"> ₹999</span>
-  </div>
-  <button type="button" class="select-btn" data-id="steel_column" data-price="149" onclick="toggleProduct(this)">SELECT</button>
-</div>
-<div class="card">
-  <div class="product-info">
-    <h3>7. Steel Quantity - Footing</h3>
-    <span class="price">₹149</span>
-    <span class="old"> ₹999</span>
-  </div>
-  <button type="button" class="select-btn" data-id="steel_footing" data-price="149" onclick="toggleProduct(this)">SELECT</button>
-</div>
-<div class="card">
-  <div class="product-info">
-    <h3>8. Steel Quantity - Slab</h3>
-    <span class="price">₹149</span>
-    <span class="old"> ₹999</span>
-  </div>
-  <button type="button" class="select-btn" data-id="steel_slab" data-price="149" onclick="toggleProduct(this)">SELECT</button>
-</div>
-<div class="card">
-  <div class="product-info">
-    <h3>9. Material Quantity</h3>
-    <span class="price">₹149</span>
-    <span class="old"> ₹999</span>
-  </div>
-  <button type="button" class="select-btn" data-id="material" data-price="149" onclick="toggleProduct(this)">SELECT</button>
-</div>
-<div class="card">
-  <div class="product-info">
-    <h3>10. Painting Quantity</h3>
-    <span class="price">₹149</span>
-    <span class="old"> ₹999</span>
-  </div>
-  <button type="button" class="select-btn" data-id="painting" data-price="149" onclick="toggleProduct(this)">SELECT</button>
-</div>
-<div class="card">
-  <div class="product-info">
-    <h3>11. Plastering Quantity</h3>
-    <span class="price">₹149</span>
-    <span class="old"> ₹999</span>
-  </div>
-  <button type="button" class="select-btn" data-id="plastering" data-price="149" onclick="toggleProduct(this)">SELECT</button>
-</div>
-<div class="card">
-  <div class="product-info">
-    <h3>12. Plaster + Painting Quantity</h3>
-    <span class="price">₹149</span>
-    <span class="old"> ₹999</span>
-  </div>
-  <button type="button" class="select-btn" data-id="plaster_painting" data-price="149" onclick="toggleProduct(this)">SELECT</button>
-</div>
-<div class="card">
-  <div class="product-info">
-    <h3>13. Total Cost of Building</h3>
-    <span class="price">₹149</span>
-    <span class="old"> ₹999</span>
-  </div>
-  <button type="button" class="select-btn" data-id="total_cost" data-price="149" onclick="toggleProduct(this)">SELECT</button>
-</div>
-<div class="card">
-  <div class="product-info">
-    <h3>14. Total Tile Quantity</h3>
-    <span class="price">₹149</span>
-    <span class="old"> ₹999</span>
-  </div>
-  <button type="button" class="select-btn" data-id="tiles" data-price="149" onclick="toggleProduct(this)">SELECT</button>
-</div>
-<div class="card">
-  <div class="product-info">
-    <h3>15. Brickwork Quantity</h3>
-    <span class="price">₹149</span>
-    <span class="old"> ₹999</span>
-  </div>
-  <button type="button" class="select-btn" data-id="brickwork" data-price="149" onclick="toggleProduct(this)">SELECT</button>
-</div>
+<!-- FIRST: RCC DETAIL STRUCTURAL DESIGNS -->
 
 <h2 class="section-title">RCC DETAIL STRUCTURAL DESIGNS</h2>
+
 <div class="card">
-  <div class="product-info">
-    <h3>16. DESIGN OF RCC SLAB</h3>
-    <span class="price">₹399</span>
-    <span class="old"> ₹999</span>
-  </div>
-  <button type="button" class="select-btn" data-id="rcc_slab_design" data-price="399" onclick="toggleProduct(this)">SELECT</button>
+<div class="product-info">
+<h3>1. DESIGN OF RCC SLAB</h3>
+<span class="price">₹399</span>
+<span class="old"> ₹2999</span>
 </div>
+<button type="button" class="select-btn" data-id="rcc_slab_design" data-price="399" onclick="toggleProduct(this)">SELECT</button>
+</div>
+
 <div class="card">
-  <div class="product-info">
-    <h3>17. DESIGN OF RCC COLUMN</h3>
-    <span class="price">₹399</span>
-    <span class="old"> ₹999</span>
-  </div>
-  <button type="button" class="select-btn" data-id="rcc_column_design" data-price="399" onclick="toggleProduct(this)">SELECT</button>
+<div class="product-info">
+<h3>2. DESIGN OF RCC COLUMN</h3>
+<span class="price">₹399</span>
+<span class="old"> ₹2999</span>
 </div>
+<button type="button" class="select-btn" data-id="rcc_column_design" data-price="399" onclick="toggleProduct(this)">SELECT</button>
+</div>
+
 <div class="card">
-  <div class="product-info">
-    <h3>18. DESIGN OF RCC FOOTING</h3>
-    <span class="price">₹399</span>
-    <span class="old"> ₹999</span>
-  </div>
-  <button type="button" class="select-btn" data-id="rcc_footing_design" data-price="399" onclick="toggleProduct(this)">SELECT</button>
+<div class="product-info">
+<h3>3. DESIGN OF RCC FOOTING</h3>
+<span class="price">₹399</span>
+<span class="old"> ₹2999</span>
 </div>
+<button type="button" class="select-btn" data-id="rcc_footing_design" data-price="399" onclick="toggleProduct(this)">SELECT</button>
+</div>
+
 <div class="card">
-  <div class="product-info">
-    <h3>19. DESIGN OF RCC BEAM</h3>
-    <span class="price">₹399</span>
-    <span class="old"> ₹999</span>
-  </div>
-  <button type="button" class="select-btn" data-id="rcc_beam_design" data-price="399" onclick="toggleProduct(this)">SELECT</button>
+<div class="product-info">
+<h3>4. DESIGN OF RCC BEAM</h3>
+<span class="price">₹399</span>
+<span class="old"> ₹2999</span>
 </div>
+<button type="button" class="select-btn" data-id="rcc_beam_design" data-price="399" onclick="toggleProduct(this)">SELECT</button>
+</div>
+
+
+<!-- SECOND: BUILDING QUANTITY CALCULATORS -->
+
+<h2 class="section-title">BUILDING QUANTITY CALCULATORS</h2>
+
+<div class="card">
+<div class="product-info">
+<h3>5. Concrete Quantity - Column</h3>
+<span class="price">₹149</span>
+<span class="old"> ₹999</span>
+</div>
+<button type="button" class="select-btn" data-id="concrete_column" data-price="149" onclick="toggleProduct(this)">SELECT</button>
+</div>
+
+<div class="card">
+<div class="product-info">
+<h3>6. Concrete Quantity - Footing</h3>
+<span class="price">₹149</span>
+<span class="old"> ₹999</span>
+</div>
+<button type="button" class="select-btn" data-id="concrete_footing" data-price="149" onclick="toggleProduct(this)">SELECT</button>
+</div>
+
+<div class="card">
+<div class="product-info">
+<h3>7. Concrete Quantity - Slab</h3>
+<span class="price">₹149</span>
+<span class="old"> ₹999</span>
+</div>
+<button type="button" class="select-btn" data-id="concrete_slab" data-price="149" onclick="toggleProduct(this)">SELECT</button>
+</div>
+
+<div class="card">
+<div class="product-info">
+<h3>8. Concrete Quantity - Beam</h3>
+<span class="price">₹149</span>
+<span class="old"> ₹999</span>
+</div>
+<button type="button" class="select-btn" data-id="concrete_beam" data-price="149" onclick="toggleProduct(this)">SELECT</button>
+</div>
+
+<div class="card">
+<div class="product-info">
+<h3>9. Steel Quantity - Beam</h3>
+<span class="price">₹149</span>
+<span class="old"> ₹999</span>
+</div>
+<button type="button" class="select-btn" data-id="steel_beam" data-price="149" onclick="toggleProduct(this)">SELECT</button>
+</div>
+
+<div class="card">
+<div class="product-info">
+<h3>10. Steel Quantity - Column</h3>
+<span class="price">₹149</span>
+<span class="old"> ₹999</span>
+</div>
+<button type="button" class="select-btn" data-id="steel_column" data-price="149" onclick="toggleProduct(this)">SELECT</button>
+</div>
+
+<div class="card">
+<div class="product-info">
+<h3>11. Steel Quantity - Footing</h3>
+<span class="price">₹149</span>
+<span class="old"> ₹999</span>
+</div>
+<button type="button" class="select-btn" data-id="steel_footing" data-price="149" onclick="toggleProduct(this)">SELECT</button>
+</div>
+
+<div class="card">
+<div class="product-info">
+<h3>12. Steel Quantity - Slab</h3>
+<span class="price">₹149</span>
+<span class="old"> ₹999</span>
+</div>
+<button type="button" class="select-btn" data-id="steel_slab" data-price="149" onclick="toggleProduct(this)">SELECT</button>
+</div>
+
+<div class="card">
+<div class="product-info">
+<h3>13. Material Quantity</h3>
+<span class="price">₹149</span>
+<span class="old"> ₹999</span>
+</div>
+<button type="button" class="select-btn" data-id="material" data-price="149" onclick="toggleProduct(this)">SELECT</button>
+</div>
+
+<div class="card">
+<div class="product-info">
+<h3>14. Painting Quantity</h3>
+<span class="price">₹149</span>
+<span class="old"> ₹999</span>
+</div>
+<button type="button" class="select-btn" data-id="painting" data-price="149" onclick="toggleProduct(this)">SELECT</button>
+</div>
+
+<div class="card">
+<div class="product-info">
+<h3>15. Plastering Quantity</h3>
+<span class="price">₹149</span>
+<span class="old"> ₹999</span>
+</div>
+<button type="button" class="select-btn" data-id="plastering" data-price="149" onclick="toggleProduct(this)">SELECT</button>
+</div>
+
+<div class="card">
+<div class="product-info">
+<h3>16. Plaster + Painting Quantity</h3>
+<span class="price">₹149</span>
+<span class="old"> ₹999</span>
+</div>
+<button type="button" class="select-btn" data-id="plaster_painting" data-price="149" onclick="toggleProduct(this)">SELECT</button>
+</div>
+
+<div class="card">
+<div class="product-info">
+<h3>17. Total Cost of Building</h3>
+<span class="price">₹149</span>
+<span class="old"> ₹999</span>
+</div>
+<button type="button" class="select-btn" data-id="total_cost" data-price="149" onclick="toggleProduct(this)">SELECT</button>
+</div>
+
+<div class="card">
+<div class="product-info">
+<h3>18. Total Tile Quantity</h3>
+<span class="price">₹149</span>
+<span class="old"> ₹999</span>
+</div>
+<button type="button" class="select-btn" data-id="tiles" data-price="149" onclick="toggleProduct(this)">SELECT</button>
+</div>
+
+<div class="card">
+<div class="product-info">
+<h3>19. Brickwork Quantity</h3>
+<span class="price">₹149</span>
+<span class="old"> ₹999</span>
+</div>
+<button type="button" class="select-btn" data-id="brickwork" data-price="149" onclick="toggleProduct(this)">SELECT</button>
+</div>
+
+
+<!-- SELECTION BUTTONS -->
 
 <div class="actions">
 <button type="button" onclick="selectAll()">SELECT ALL 19</button>
 <button type="button" onclick="clearAll()" style="background:#777">CLEAR ALL</button>
 </div>
 
+
+<!-- PRICE SUMMARY -->
+
 <div class="summary">
 <h3>Your Selection</h3>
+
 <p>Selected Sheets: <span id="count">0</span></p>
+
 <p>Original Price: <span class="old" id="old">₹0</span></p>
+
 <p class="total" id="total">₹0</p>
+
 <p>Regular Excel Sheets: ₹149 each</p>
 <p>RCC Structural Design Sheets: ₹399 each</p>
+
 <button class="buy" type="button" onclick="buyNow()">BUY NOW</button>
+
 <p id="paymentStatus"></p>
 </div>
+
 <div id="downloadArea"></div>
+
 </div>
 
+
 <script>
+
 const selected = new Map();
 
 function toggleProduct(button) {
-  const id = button.dataset.id;
-  const price = Number(button.dataset.price);
-  if (selected.has(id)) {
-    selected.delete(id);
-    button.classList.remove("selected");
-    button.textContent = "SELECT";
-  } else {
-    selected.set(id, price);
-    button.classList.add("selected");
-    button.textContent = "SELECTED ✓";
-  }
-  updateSummary();
+const id = button.dataset.id;
+const price = Number(button.dataset.price);
+
+if (selected.has(id)) {
+selected.delete(id);
+button.classList.remove("selected");
+button.textContent = "SELECT";
+} else {
+selected.set(id, price);
+button.classList.add("selected");
+button.textContent = "SELECTED ✓";
+}
+
+updateSummary();
 }
 
 function selectAll() {
-  document.querySelectorAll(".select-btn").forEach(button => {
-    selected.set(button.dataset.id, Number(button.dataset.price));
-    button.classList.add("selected");
-    button.textContent = "SELECTED ✓";
-  });
-  updateSummary();
+document.querySelectorAll(".select-btn").forEach(button => {
+selected.set(button.dataset.id, Number(button.dataset.price));
+button.classList.add("selected");
+button.textContent = "SELECTED ✓";
+});
+
+updateSummary();
 }
 
 function clearAll() {
-  selected.clear();
-  document.querySelectorAll(".select-btn").forEach(button => {
-    button.classList.remove("selected");
-    button.textContent = "SELECT";
-  });
-  updateSummary();
+selected.clear();
+
+document.querySelectorAll(".select-btn").forEach(button => {
+button.classList.remove("selected");
+button.textContent = "SELECT";
+});
+
+updateSummary();
 }
 
 function updateSummary() {
-  const count = selected.size;
-  const total = Array.from(selected.values()).reduce((sum, price) => sum + price, 0);
-  document.getElementById("count").textContent = count;
-  document.getElementById("old").textContent = "₹" + (count * 999).toLocaleString("en-IN");
-  document.getElementById("total").textContent = "₹" + total.toLocaleString("en-IN");
+const count = selected.size;
+
+const total = Array.from(selected.values()).reduce(
+(sum, price) => sum + price, 0
+);
+
+document.getElementById("count").textContent = count;
+
+document.getElementById("old").textContent =
+"₹" + (count * 999).toLocaleString("en-IN");
+
+document.getElementById("total").textContent =
+"₹" + total.toLocaleString("en-IN");
 }
+
 
 async function buyNow() {
-  if (selected.size === 0) {
-    alert("Please select at least one Excel sheet.");
-    return;
-  }
 
-  if (typeof Razorpay === "undefined") {
-    alert("Payment service could not load. Please check your internet connection and try again.");
-    return;
-  }
-
-  const paymentStatus = document.getElementById("paymentStatus");
-  paymentStatus.textContent = "Creating secure payment...";
-  const backend = "https://construction-excel-store-backend.onrender.com";
-  const sheetIds = Array.from(selected.keys());
-
-  try {
-    const orderResponse = await fetch(backend + "/create-order", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ sheetIds })
-    });
-    const order = await orderResponse.json();
-    if (!orderResponse.ok) throw new Error(order.error || "Order creation failed");
-
-    const options = {
-      key: order.keyId,
-      amount: order.amount,
-      currency: order.currency,
-      name: "CONSTRUCTION EXCEL STORE",
-      description: sheetIds.length + " Excel Sheet(s)",
-      order_id: order.orderId,
-      modal: {
-        ondismiss: function() {
-          paymentStatus.textContent = "Payment cancelled. Please try again.";
-        }
-      },
-      handler: async function(response) {
-        paymentStatus.textContent = "Verifying payment...";
-        try {
-          const verifyResponse = await fetch(backend + "/verify-payment", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              razorpay_order_id: response.razorpay_order_id,
-              razorpay_payment_id: response.razorpay_payment_id,
-              razorpay_signature: response.razorpay_signature,
-              sheetIds: sheetIds
-            })
-          });
-          const result = await verifyResponse.json();
-          if (!verifyResponse.ok || !result.success) {
-            throw new Error(result.error || "Payment verification failed");
-          }
-
-          const area = document.getElementById("downloadArea");
-          area.innerHTML = "<h2>Payment Successful!</h2><p>Download your purchased Excel sheets:</p>";
-          (result.downloads || []).forEach(file => {
-            const link = document.createElement("a");
-            link.href = backend + file.url;
-            link.textContent = "Download " + file.name;
-            link.style.display = "block";
-            link.style.padding = "12px";
-            link.style.margin = "8px 0";
-            link.style.background = "#16834a";
-            link.style.color = "white";
-            link.style.textDecoration = "none";
-            link.style.borderRadius = "7px";
-            area.appendChild(link);
-          });
-          paymentStatus.textContent = "Payment verified successfully!";
-          area.scrollIntoView({ behavior: "smooth" });
-        } catch (error) {
-          paymentStatus.textContent = "Payment verification issue: " + error.message;
-          alert(error.message);
-        }
-      }
-    };
-
-    const checkout = new Razorpay(options);
-    checkout.on("payment.failed", function() {
-      paymentStatus.textContent = "Payment failed. Please try again.";
-      alert("Payment failed. Please try again.");
-    });
-    checkout.open();
-  } catch (error) {
-    paymentStatus.textContent = "Error: " + error.message;
-    alert(error.message);
-  }
+if (selected.size === 0) {
+alert("Please select at least one Excel sheet.");
+return;
 }
+
+if (typeof Razorpay === "undefined") {
+alert("Payment service could not load. Please check your internet connection and try again.");
+return;
+}
+
+const paymentStatus = document.getElementById("paymentStatus");
+
+paymentStatus.textContent = "Creating secure payment...";
+
+const backend = "https://construction-excel-store-backend.onrender.com";
+
+const sheetIds = Array.from(selected.keys());
+
+try {
+
+const orderResponse = await fetch(backend + "/create-order", {
+method: "POST",
+headers: {"Content-Type": "application/json"},
+body: JSON.stringify({sheetIds})
+});
+
+const order = await orderResponse.json();
+
+if (!orderResponse.ok) {
+throw new Error(order.error || "Order creation failed");
+}
+
+const options = {
+
+key: order.keyId,
+amount: order.amount,
+currency: order.currency,
+
+name: "CONSTRUCTION EXCEL STORE",
+
+description: sheetIds.length + " Excel Sheet(s)",
+
+order_id: order.orderId,
+
+modal: {
+ondismiss: function() {
+paymentStatus.textContent = "Payment cancelled. Please try again.";
+}
+},
+
+handler: async function(response) {
+
+paymentStatus.textContent = "Verifying payment...";
+
+try {
+
+const verifyResponse = await fetch(backend + "/verify-payment", {
+method: "POST",
+headers: {"Content-Type": "application/json"},
+
+body: JSON.stringify({
+razorpay_order_id: response.razorpay_order_id,
+razorpay_payment_id: response.razorpay_payment_id,
+razorpay_signature: response.razorpay_signature,
+sheetIds: sheetIds
+})
+
+});
+
+const result = await verifyResponse.json();
+
+if (!verifyResponse.ok || !result.success) {
+throw new Error(result.error || "Payment verification failed");
+}
+
+const area = document.getElementById("downloadArea");
+
+area.innerHTML =
+"<h2>Payment Successful!</h2><p>Download your purchased Excel sheets:</p>";
+
+(result.downloads || []).forEach(file => {
+
+const link = document.createElement("a");
+
+link.href = backend + file.url;
+
+link.textContent = "Download " + file.name;
+
+link.style.display = "block";
+link.style.padding = "12px";
+link.style.margin = "8px 0";
+link.style.background = "#16834a";
+link.style.color = "white";
+link.style.textDecoration = "none";
+link.style.borderRadius = "7px";
+
+area.appendChild(link);
+
+});
+
+paymentStatus.textContent = "Payment verified successfully!";
+
+area.scrollIntoView({behavior: "smooth"});
+
+} catch (error) {
+
+paymentStatus.textContent =
+"Payment verification issue: " + error.message;
+
+alert(error.message);
+
+}
+
+}
+
+};
+
+const checkout = new Razorpay(options);
+
+checkout.on("payment.failed", function() {
+
+paymentStatus.textContent = "Payment failed. Please try again.";
+
+alert("Payment failed. Please try again.");
+
+});
+
+checkout.open();
+
+} catch (error) {
+
+paymentStatus.textContent = "Error: " + error.message;
+
+alert(error.message);
+
+}
+
+}
+
 </script>
+
 </body>
 </html>
